@@ -1,3 +1,9 @@
 = ekko
 
-<em>ekko</em> is a jQuery plugin that enables similar functionality that is present in the PeriodicalUpdater method from Prototyp.js. This plugin is based on work done by John McCollum and his PeriodicalUpdater plugin. The main difference is that with <em>ekko</em> you can have multiple updaters per page.
+<em>ekko</em> is a jQuery plugin that enables similar functionality that is present
+in the PeriodicalUpdater method from Prototyp.js. This plugin is based on work done 
+by John McCollum and his PeriodicalUpdater plugin. The main difference is that with 
+<em>ekko</em> you can have multiple updaters per page.
+
+To view a demonstration of this plugin in action you may download and open the
+html/index.html file.
