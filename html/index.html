@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>ekko</title>
+
+		<link rel="stylesheet" href="stylesheets/application.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="javascripts/jquery-1.3.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="javascripts/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../lib/jquery.ekko.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+			jQuery(document).ready(function () {
+				
+				jQuery('#load_zone1:first').ekko({
+					url : 'ajax_test1.txt'
+				}, function (data) {
+					jQuery('#load_zone1:first').append("<li>" + data + "</li>");
+				});
+				
+				jQuery('#load_zone2:first').ekko({
+					url : 'ajax_test2.txt'
+				}, function (data) {
+					jQuery('#load_zone2:first').append("<li>" + data + "</li>");
+				});
+				
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="container">
+			<h1 id="pagetitle">jQuery Plugin: <span><tt>$.fn.ekko()</tt></span></h1>
+			
+			<h2>Description</h2>
+			<p>
+				<tt>$.fn.ekko()</tt> is an attempt at creating a periodical updater using jQuery's ajax
+				calls. This is not the <a href="http://johnmccollum.co.uk/2009/02/18/converting-prototypes-ajaxperiodicalupdater-to-jquery/">first attempt</a> at this and I am sure there are going
+				to be things that people do not like about this solution. For my needs, this
+				works out perfectly. So what are my needs? I needed to be able to replicate
+				behavior that I used with Prototype.js PeriodicalUpdater method. The solution
+				that <a href="http://johnmccollum.co.uk/">John McCollum</a> 
+				<a href="http://johnmccollum.co.uk/2009/02/18/converting-prototypes-ajaxperiodicalupdater-to-jquery/">provided</a>
+				would have worked except for the fact that you could only have one updater
+				call per page. I took what he had created and tweaked it slightly to allow
+				an updater per object instead of per page.
+			</p>
+			
+			<p>
+				The <tt>$.fn.ekko()</tt> method has been written to apply to a set of objects because
+				of the way jQuery returns an array (even if there is only one object found).
+				Because of this you will probably want to limit this to a single object, unless
+				you have a need where multiple objects on your page should update with the
+				same information.
+			</p>
+			
+			<h2>Options</h2>
+			<p>
+				<table>
+					<thead>
+						<tr>
+							<th>name</th>
+							<th>description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>url</td>
+							<td>URL of the ajax request</td>
+						</tr>
+						<tr>
+							<td>method</td>
+							<td>get or post</td>
+						</tr>
+						<tr>
+							<td>sendData</td>
+							<td>Array of values to be passed to the page - e.g. { name : "Terry", greeting : "hello" }</td>
+						</tr>
+						<tr>
+							<td>minTimeout</td>
+							<td>Starting value for the timeout in milliseconds (defaults to 1 second)</td>
+						</tr>
+						<tr>
+							<td>maxTimeout</td>
+							<td>Maximum length of time between requests (defaults to 1 hour)</td>
+						</tr>
+						<tr>
+							<td>multiplier</td>
+							<td>The multiplier is applied to the minTimeout until it reaches the maxTimeout unless the return data changes, then the minTimeout will be reset</td>
+						</tr>
+						<tr>
+							<td>type</td>
+							<td>The response type - text (default), xml, json, etc</td>
+						</tr>
+					</tbody>
+				</table>
+			</p>
+			
+			<h2>Examples</h2>
+			<p>
+				For this examples listed below there are two file in this package,
+				ajax_test1.txt and ajax_test2.txt, located in the html directory. By changing
+				the values of these file and saving them you will be able to see the effect.
+				Obviously if you are doing this in the real world you will have a much more
+				dynamic way of populating the information that you are seeking.
+			</p>
+			<p>
+				<ol id="load_zone1">
+				</ol>
+			</p>
+			<p>
+				<ol id="load_zone2">
+				</ol>
+			</p>
+		</div>
+	</body>
+</html>
